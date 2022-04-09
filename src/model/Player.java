@@ -11,7 +11,68 @@ import java.util.*;
  * @version 1.1
  *
  */
+
+
 public class Player {
+
+	private String strategy = "Human";
+
+	/**
+	 * Player name
+	 */
+	private String name;
+
+	/**
+	 * Player ID
+	 */
+	private int player_id;
+
+	/**
+	 * Total number of armies a player has
+	 */
+	private int total_armies;
+
+	/**
+	 * Armies that are not assigned to any country
+	 */
+	private int total_armies_not_deployed;
+
+	/**
+	 * Total number of countries a player owns
+	 */
+	private List<Country> total_countries_occupied;
+
+	private List<Country> countries_occupied;
+
+	/**
+	 * Number of Continents occupied
+	 */
+	private List<Continent> continents_occupied;
+
+	/**
+	 * The cards that a player holds
+	 */
+	private List<CardTypes> cards;
+
+	/**
+	 * Color to represent player owned countries
+	 */
+	private Color my_color;
+	/**
+	 * how many times player exchange the cards
+	 */
+	private int card_exchange_counter;
+
+	/**
+	 * Default Constructor
+	 */
+	public Player(int player_id) {
+		this.player_id = player_id;
+		this.total_countries_occupied = new ArrayList<>();
+		this.countries_occupied = new ArrayList<>();
+		this.cards = new ArrayList<>();
+		card_exchange_counter = 0;
+	}
 
 	ReinforcementController reinforcementcontroller = new ReinforcementController();
 	FortificationController fortificationcontroller = new FortificationController();
@@ -244,64 +305,6 @@ public class Player {
 		return strategy;
 	} 
 
-	private String strategy = "Human"; 
-
-	/**
-	 * Player name
-	 */
-	private String name;
-
-	/**
-	 * Player ID
-	 */
-	private int player_id;
-
-	/**
-	 * Total number of armies a player has
-	 */
-	private int total_armies;
-
-	/**
-	 * Armies that are not assigned to any country
-	 */
-	private int total_armies_not_deployed;
-
-	/**
-	 * Total number of countries a player owns
-	 */
-	private List<Country> total_countries_occupied;
-
-	private List<Country> countries_occupied;
-
-	/**
-	 * Number of Continents occupied
-	 */
-	private List<Continent> continents_occupied;
-
-	/**
-	 * The cards that a player holds
-	 */
-	private List<CardTypes> cards;
-
-	/**
-	 * Color to represent player owned countries
-	 */
-	private Color my_color;
-	/**
-	 * how many times player exchange the cards
-	 */
-	private int card_exchange_counter;
-
-	/**
-	 * Default Constructor
-	 */
-	public Player(int player_id) {
-		this.player_id = player_id;
-		this.total_countries_occupied = new ArrayList<>();
-		this.countries_occupied = new ArrayList<>();
-		this.cards = new ArrayList<>();
-		card_exchange_counter = 0;
-	}
 
 	/**
 	 * Gets player_id

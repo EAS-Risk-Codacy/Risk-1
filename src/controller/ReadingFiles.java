@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -13,8 +12,6 @@ import java.util.List;
 import model.Continent;
 import model.Country;
 import model.Player;
-import view.SelectNoOfPlayers;
-import view.MFrame;
 import view.MFrame2;
 
 /**
