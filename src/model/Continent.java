@@ -11,19 +11,6 @@ import java.util.*;
 public class Continent {
 
 	/**
-	 * Constructor to instantiate continent class
-	 * 
-	 * @param control_value
-	 * @param name
-	 */
-	public Continent(int control_value, String name) {
-		this.continent_id = continent_id;
-		this.countries = new ArrayList<>();
-		this.name = name;
-		this.control_value = control_value;
-	}
-
-	/**
 	 * Represents Continent ID
 	 */
 	private int continent_id;
@@ -44,11 +31,25 @@ public class Continent {
 	private List<Country> countries;
 
 	/**
+	 * Constructor to instantiate continent class
+	 * 
+	 * @param control_value
+	 * @param name
+	 */
+	public Continent(int control_value, String name) {
+		this.continent_id = continent_id;
+		this.countries = new ArrayList<>();
+		this.name = name;
+		this.control_value = control_value;
+	}
+
+	/**
 	 * Gets continent's ID
 	 * 
 	 * @return continent ID
 	 */
-	public int getcontinent_id() {
+
+	public int getContinent_id() {
 		return continent_id;
 	}
 

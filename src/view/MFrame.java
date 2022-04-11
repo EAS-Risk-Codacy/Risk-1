@@ -33,7 +33,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
 import controller.MyActionListner;
-import javafx.scene.control.TextArea;
 import model.Country;
 
 /**

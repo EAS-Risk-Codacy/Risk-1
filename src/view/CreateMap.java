@@ -21,10 +21,10 @@ import model.Country;
 public class CreateMap {
 
 	private JPanel assign_countries_panel, assign_neighbours_panel;
-	private JFrame assign_countries_frame, assign_neighbours_frame, create_map_frame2, get_number_frame;
+	private JFrame assign_countries_frame, assign_neighbours_frame, get_number_frame;
 	private JLabel no_of_countries_label, no_of_continents_label, continent_contol_value_label;
 	private JTextField no_of_countries_text_field, no_of_continents_text_field, control_value_text_field;
-	private JButton generate_map_button, add_continent_name_button;
+	private JButton generate_map_button;
 	private JButton add_to_country_button, add_to_continent_button, next_button, done_button;
 	private JComboBox continents_combo, countries_combo;
 	public static int NoOfCountries, NoOfContinents;
