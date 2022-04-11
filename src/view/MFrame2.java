@@ -18,12 +18,6 @@ public class MFrame2 {
 	JLabel jLabel;
 
 	/**
-	 * default constructor
-	 */
-	public MFrame2() {
-	}
-
-	/**
 	 * throws error and restarts game
 	 * 
 	 * @param message

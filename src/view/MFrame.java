@@ -1,12 +1,9 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -29,7 +26,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
 import controller.MyActionListner;
@@ -382,15 +378,15 @@ public class MFrame extends JFrame implements Observer {
 	}
 
 	public void Exit_Option() {
-		myActionListner.SaveGameOnExit();
+		myActionListner.saveGameOnExit();
 
 	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stu
-		ArrayList<Float> percent = ((MyActionListner) arg0).CountriesPercentage();
-		ArrayList<String> listinh = ((MyActionListner) arg0).ContinentsOccupied();
+		ArrayList<Float> percent = ((MyActionListner) arg0).countriesPercentage();
+		ArrayList<String> listinh = ((MyActionListner) arg0).continentsOccupied();
 		UpdateGameDominationViewPercentage(percent);
 		UpdateGameDominationViewContinentOccupied(listinh);
 		cards();

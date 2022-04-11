@@ -45,7 +45,6 @@ public class MFrame4 extends JFrame implements ActionListener {
 	
 	 */
 	public void fun() {
-		FlowLayout flowLayout = new FlowLayout();
 		JPanel mainPanel = new JPanel(new GridLayout(0, 1));
 		setMinimumSize(new Dimension(500, 500));
 		add(mainPanel);

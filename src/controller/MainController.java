@@ -37,7 +37,7 @@ public class MainController {
 	public boolean resume = false;
 
 	@SuppressWarnings("deprecation")
-	public void Function() throws Exception {
+	public void function() throws Exception {
 		try {
 			frame2 = new MFrame2();
 			files = new ReadingFiles(frame2);
@@ -83,16 +83,16 @@ public class MainController {
 				frame.fun();
 				//temp();
 				if (resume)
-					LoadSavedGame(bufferedReader);
+					loadSavedGame(bufferedReader);
 
 				for (int i = 0; i < ReadingFiles.playerId2.size(); i++) {
 					ReadingFiles.playerId2.get(i).setStratergy(SelectPlayerStrategies.getStrategies().get(i));
 				}
-				SetButtons();
-				PaintCountries();
-				SetDominationView();
+				setButtons();
+				paintCountries();
+				setDominationView();
 				if (resume) {
-					myactionlistner.PhaseResume(phase);
+					myactionlistner.phaseResume(phase);
 				} else {
 					myactionlistner.ReinforcementPhase();
 				}
@@ -108,7 +108,7 @@ public class MainController {
 	/**
 	 * Set domination View
 	 */
-	public void SetDominationView() {
+	public void setDominationView() {
 		frame.SetDominationView(files.players.size());
 		updateDominationView();
 
@@ -119,7 +119,7 @@ public class MainController {
 	 * this method loads the saved game
 	 * @param bufferedReader
 	 */
-	public void LoadSavedGame(BufferedReader bufferedReader) {
+	public void loadSavedGame(BufferedReader bufferedReader) {
 		try {
 			String temp = "";
 			String Everything = "";
@@ -181,7 +181,7 @@ public class MainController {
 	 * @param armies
 	 */
 	public void AddArmies(int armies) {
-		OnlyNeeded(neighbours(armies));
+		onlyNeeded(neighbours(armies));
 
 	}
 
@@ -190,7 +190,7 @@ public class MainController {
 	 *
 	 * @throws IOException
 	 */
-	public void SetButtons() throws IOException {
+	public void setButtons() throws IOException {
 		frame.SetButtons(countryObjects());
 	}
 
@@ -200,9 +200,9 @@ public class MainController {
 	 * @throws IOException
 	 */
 
-	public void RefreshButtons() throws IOException {
+	public void refreshButtons() throws IOException {
 		frame.Refresh(countryObjects());
-		PaintCountries();
+		paintCountries();
 		repaintAndRevalidate();
 	}
 
@@ -245,7 +245,7 @@ public class MainController {
 	/**
 	 * Give color to all countries
 	 */
-	public void PaintCountries() {
+	public void paintCountries() {
 		frame.SetColorToAll(countryObjects());
 	}
 
@@ -254,7 +254,7 @@ public class MainController {
 	 *
 	 * @param country
 	 */
-	public void OnlyNeeded(List<Country> country) {
+	public void onlyNeeded(List<Country> country) {
 		frame.OnlyNeeded(country);
 	}
 
@@ -289,7 +289,7 @@ public class MainController {
 	 *            country whose neighbor list you want
 	 * @return result: string of neighbors
 	 */
-	public String NeighboursList(Country country) {
+	public String neighboursList(Country country) {
 		List<Country> countrylist = country.getNeighbors();
 		String result = "";
 		for (int i = 0; i < countrylist.size(); i++) {
@@ -308,7 +308,7 @@ public class MainController {
 	public void ChangePlayerCountry(String countryname) throws IOException {
 		Country country = countryObjects().get(countryname);
 		country.setPlayer(files.playerId.get(0));
-		RefreshButtons();
+		refreshButtons();
 
 	}
 

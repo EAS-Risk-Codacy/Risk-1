@@ -28,14 +28,24 @@ import model.Player;
  */
 public class AggressiveStrategyTest {
 	AggressiveStratery ast;
-	Player player1, player2, player3;
-	Country country1, country2, country3, country4, country5, country6, country7;
-	Continent continent1, continent2;
+	Player player1;
+	Player player2;
+	Country country1, country6, country7;
+	Country country2;
+	Country country3;
+	Country country4;
+	Country country5;
+	Continent continent1;
+	Continent continent2;
 	HashMap<String, Country> temp;
 	HashMap<Integer, Player> temp1;
 	HashMap<String, Continent> temp3;
-	List<Country> n_list, n_list1;
-	List<CardTypes> list1, list2, list3, list4;
+	List<Country> n_list;
+	List<Country> n_list1;
+	List<CardTypes> list1;
+	List<CardTypes> list2;
+	List<CardTypes> list3;
+	List<CardTypes> list4;
 
 	/**
 	 * Method called before each test

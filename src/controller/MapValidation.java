@@ -40,7 +40,7 @@ public class MapValidation {
 	/**
 	 * Checks if graph is functional in two ways
 	 */
-	public void BiDirectionalCheck() {
+	public void biDirectionalCheck() {
 
 		try {
 			for (int i = 0; i < hashMap.size(); i++) {
@@ -135,7 +135,7 @@ public class MapValidation {
 	/**
 	 * No two continents can have same country
 	 */
-	public void ContinentHaveSameCountry() {
+	public void continentHaveSameCountry() {
 		for (int i = 0; i < hashMap2.size(); i++) {
 			Continent temp = hashMap2.get(hashMap2.keySet().toArray()[i]);
 			for (int j = 0; j < hashMap2.size(); j++) {
@@ -216,9 +216,9 @@ public class MapValidation {
 	public void CallAllMethods() {
 		GraphConnectivity();
 		ContinentConectivity();
-		BiDirectionalCheck();
+		biDirectionalCheck();
 		EmptyNeighbours();
-		ContinentHaveSameCountry();
+		continentHaveSameCountry();
 		NoContinentIsUnused();
 		NoContinentOrCountry();
 		NotItsOwnNeighbour();

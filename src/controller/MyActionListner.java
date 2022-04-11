@@ -89,23 +89,23 @@ public class MyActionListner extends Observable implements ActionListener {
 	/**
 	 * This method display number of armies player can deploy
 	 */
-	public void PhaseResume(String phase) {
+	public void phaseResume(String phase) {
 		if (phase.equals("Finish Reinforcement")) {
 			ReinforcementPhase();
 		} else if (phase.equals("Finish Attack")) {
 			controller.frame.ActivateAll();
-			controller.OnlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
+			controller.onlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
 			endReinforcement();
 		} else if (phase.equals("Finish Fortification")) {
 			controller.frame.ActivateAll();
-			controller.OnlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
+			controller.onlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
 			finishAttack();
 		}
 	}
 
 	public void ReinforcementPhase() {
 		try {
-			controller.RefreshButtons();
+			controller.refreshButtons();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -169,7 +169,7 @@ System.out.println("---------------------------------");
 			controller.frame.buttonCard1.setEnabled(true);
 			changed();
 			controller.frame.ActivateAll();
-			controller.OnlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
+			controller.onlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
 			controller.playerObjet(currentPlayer).calculateReinforcementArmies(controller.playerObjet(currentPlayer));
 			controller.frame.error("Its Player:- " + (currentPlayer + 1) + " Turn");
 			
@@ -213,13 +213,13 @@ System.out.println("---------------------------------");
 	/**
 	 * This method
 	 */
-	public void FortificationPhase() {
+	public void fortificationPhase() {
 		textarea("Currently in Fortification Mode");
 
 		AttackController.card = false;
 		changed();
 		controller.frame.ActivateAll();
-		controller.OnlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
+		controller.onlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
 		playerUpdate();
 	}
 
@@ -235,7 +235,7 @@ System.out.println("---------------------------------");
 		controller.frame.jLabeCardl.setText(cardTypesList.toString());
 		if (fortifyCountry1 == null) {
 			fortifyCountry1 = country;
-			controller.frame.CCC = controller.NeighboursList(country);
+			controller.frame.CCC = controller.neighboursList(country);
 			changed();
 			controller.frame.error("Select One More Country You Want to move your Armies to");
 		} else if (fortifyCountry2 == null) {
@@ -254,7 +254,7 @@ System.out.println("---------------------------------");
 						fortifyCountry1 = null;
 						fortifyCountry2 = null;
 					} else {
-						controller.RefreshButtons();
+						controller.refreshButtons();
 						currentPhase = "Finish Reinforcement";
 						controller.frame.nextAction.setText("Finish Reinforcement");
 						// playerUpdate();
@@ -292,11 +292,11 @@ System.out.println("---------------------------------");
 				attackCountry1 = null;
 				attackCountry2 = null;
 				controller.frame.error("No Neighbours to attack");
-				controller.OnlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
-				controller.RefreshButtons();
+				controller.onlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
+				controller.refreshButtons();
 			} else {
 				controller.frame.OnlyNeeded(abc);
-				controller.RefreshButtons();
+				controller.refreshButtons();
 			}
 		} else if (attackCountry2 == null) {
 			attackCountry2 = country;
@@ -321,8 +321,8 @@ System.out.println("---------------------------------");
 				controller.frame.ActivateAll();
 				attackCountry1 = null;
 				attackCountry2 = null;
-				controller.OnlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
-				controller.RefreshButtons();
+				controller.onlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
+				controller.refreshButtons();
 			}
 
 			String reply = controller.attackController.attackButton(attackCountry1, attackCountry2, dice1, dice2,
@@ -345,9 +345,9 @@ System.out.println("---------------------------------");
 			controller.frame.ActivateAll();
 			attackCountry1 = null;
 			attackCountry2 = null;
-			controller.OnlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
-			controller.RefreshButtons();
-			controller.PaintCountries();
+			controller.onlyNeeded(controller.playerObjet(currentPlayer).getTotalCountriesOccupied());
+			controller.refreshButtons();
+			controller.paintCountries();
 			boolean result = controller.playerObjet(currentPlayer).canAttack(controller.playerObjet(currentPlayer));
 			if (!result) {
 				controller.frame.buttonCard4.setEnabled(false);
@@ -356,7 +356,7 @@ System.out.println("---------------------------------");
 				controller.frame.nextAction.setText("Finish Fortification");
 				fortifyCountry1 = null;
 				fortifyCountry2 = null;
-				FortificationPhase();
+				fortificationPhase();
 			}
 
 		} else {
@@ -395,7 +395,7 @@ System.out.println("---------------------------------");
 		fortifyCountry2 = null;
 		cardTypesList.clear();
 		controller.frame.jLabeCardl.setText(cardTypesList.toString());
-		FortificationPhase();
+		fortificationPhase();
 		cardTypesList.clear();
 		controller.frame.jLabeCardl.setText(cardTypesList.toString());
 
@@ -516,7 +516,7 @@ System.out.println("---------------------------------");
 
 					ReinforcementPhase2(temp2);
 					try {
-						controller.RefreshButtons();
+						controller.refreshButtons();
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -585,11 +585,11 @@ System.out.println("---------------------------------");
 		return cardTypesList.toString();
 	}
 
-	public ArrayList<Float> CountriesPercentage() {
+	public ArrayList<Float> countriesPercentage() {
 		return controller.CountriesPercentage();
 	}
 
-	public ArrayList<String> ContinentsOccupied() {
+	public ArrayList<String> continentsOccupied() {
 		return controller.ContinentsOccupied();
 	}
 
@@ -597,7 +597,7 @@ System.out.println("---------------------------------");
 		return controller.attackController.getTotalCountries(controller.playerObjet(currentPlayer));
 	}
 
-	public void SaveGameOnExit() {
+	public void saveGameOnExit() {
 		try {
 			File file = new File("Resources/SaveGame.txt");
 			FileWriter writer = new FileWriter(file);

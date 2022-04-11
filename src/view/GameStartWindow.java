@@ -52,7 +52,6 @@ public class GameStartWindow {
 			public void actionPerformed(ActionEvent arg0) {
 				window.dispose();
 				GameMode=1;
-				SelectMapType temp = new SelectMapType();
 
 			}
 		});
@@ -72,7 +71,7 @@ public class GameStartWindow {
 				MainController controller=new MainController();
 				controller.resume=true;
 				try {
-					controller.Function();
+					controller.function();
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

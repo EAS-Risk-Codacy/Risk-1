@@ -89,7 +89,7 @@ public class SelectPlayerStrategies {
 						if (strategy_selected.contains("Human")) {
 							frame.dispose();
 							MainController controll = new MainController();
-							controll.Function();
+							controll.function();
 						} else {
 							JOptionPane.showMessageDialog(null,
 									"There Should be Atleast One Human Player. \n For all Computer Select Tournament Mode \n Select Atleast One Player");

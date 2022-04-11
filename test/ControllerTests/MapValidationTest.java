@@ -116,7 +116,7 @@ public class MapValidationTest {
 	 */
 	@Test
 	public void testBidirectionalCheck() {
-		map.BiDirectionalCheck();
+		map.biDirectionalCheck();
 		assertEquals(true, country2.getNeighbors().contains(country1));
 	}
 
@@ -146,7 +146,7 @@ public class MapValidationTest {
 	 */
 	@Test
 	public void testContinentHaveSameCountry() {
-		map.ContinentHaveSameCountry();
+		map.continentHaveSameCountry();
 		assertEquals(true, map.getString().contains("MULTIPLE CONTINENTS HAVE SAME COUNTRIES"));
 	}
 	

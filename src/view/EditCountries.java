@@ -45,7 +45,6 @@ public class EditCountries {
 	 * constructor
 	 */
 	public EditCountries() {
-		MFrame2 frame2 = new MFrame2();
 		String address = "Resources/" + SelectMap.MapSelected + ".map";
 		if (ReadingFiles.CountryNameObject != null)
 			System.out.println("Initial list of elements: " + ReadingFiles.CountriesNames);
@@ -78,7 +77,7 @@ public class EditCountries {
 		NextButton = new JButton("NEXT");
 		NextButton.setBounds(1200, 800, 90, 20);
 		
-		for (int i = 0, k = 0, j = 30; i < ReadingFiles.CountriesNames.size(); i++, j = j + 30) {
+		for (int i = 0, j = 30; i < ReadingFiles.CountriesNames.size(); i++, j = j + 30) {
 			check_boxes[i] = new JCheckBox(ReadingFiles.CountriesNames.get(i));
 		}
 
