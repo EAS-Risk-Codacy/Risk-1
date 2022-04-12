@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.*;
@@ -12,14 +11,9 @@ public class TournamentResults {
 
 	private JFrame window;
 	private JPanel panel;
-	private JLabel HeaderLabel;
-	private JTextArea field;
-	
-	public TournamentResults() {
-//		Tournament t= new Tournament();
-		// TODO Auto-generated constructor stub
-	}
+
 	public void setup(int a) {
+		JLabel HeaderLabel; //cambio de atributo a variable local
 		window = new JFrame("Tournament Results");
 		window.setSize(500, 700);
 		panel= new JPanel(new GridLayout(0,a));

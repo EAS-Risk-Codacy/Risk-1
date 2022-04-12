@@ -1,7 +1,6 @@
 package ControllerTests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -30,18 +29,26 @@ public class AggressiveStrategyTest {
 	AggressiveStratery ast;
 	Player player1;
 	Player player2;
-	Country country1, country6, country7;
+	Country country1;
 	Country country2;
 	Country country3;
 	Country country4;
 	Country country5;
+	Country country6;
+	Country country7;
 	Continent continent1;
 	Continent continent2;
 	HashMap<String, Country> temp;
 	HashMap<Integer, Player> temp1;
 	HashMap<String, Continent> temp3;
-	List<Country> n_list;
-	List<Country> n_list1;
+	List<Country> n_list = new ArrayList<>();
+	//List<Country> n_list1;
+	List<Country> n_list1 = new ArrayList<>();
+	List<Country> n_list2 = new ArrayList<>();
+	List<Country> n_list3 = new ArrayList<>();
+	List<Country> n_list4 = new ArrayList<>();
+	List<CardTypes> listp1 = new ArrayList<>();
+	List<CardTypes> listp2 = new ArrayList<>();
 	List<CardTypes> list1;
 	List<CardTypes> list2;
 	List<CardTypes> list3;
@@ -50,21 +57,8 @@ public class AggressiveStrategyTest {
 	/**
 	 * Method called before each test
 	 */
-	@Before
-	public void onStart() {
-		ast = new AggressiveStratery();
-		player1 = new Player(2);
-		country1 = new Country("India");
-		country2 = new Country("China");
-		country3 = new Country("Pakistan");
-		country4 = new Country("Bhutan");
-		country5 = new Country("Iran");
-		country6 = new Country("Canada");
-		country7 = new Country("Egypt");
 
-		continent1 = new Continent(4, "Asia");
-		continent2 = new Continent(5, "Africa");
-
+	private void onStart1(){
 		country1.setContinentId(1);
 		country1.setCountryId(11);
 		country1.setName("India");
@@ -92,37 +86,41 @@ public class AggressiveStrategyTest {
 		country7.setContinentId(7);
 		country7.setCountryId(71);
 		country7.setName("Egypt");
+	}
 
-		n_list = new ArrayList<Country>();
+	private void onStart2(){
+		//n_list = new ArrayList<Country>();
 		n_list.add(country2);
 		n_list.add(country5);
 		n_list.add(country6);
 
-		List<Country> n_list4 = new ArrayList<Country>();
+		//List<Country> n_list4 = new ArrayList<Country>();
 		n_list4.add(country2);
 		n_list4.add(country5);
 		n_list4.add(country3);
 		n_list4.add(country1);
 
-		List<Country> n_list3 = new ArrayList<Country>();
+		//List<Country> n_list3 = new ArrayList<Country>();
 		n_list3.add(country3);
 
-		n_list1 = new ArrayList<Country>();
+		//n_list1 = new ArrayList<Country>();
 		n_list1.add(country1);
 		n_list1.add(country5);
 		n_list1.add(country6);
 
-		List<Country> n_list2 = new ArrayList<Country>();
+		//List<Country> n_list2 = new ArrayList<Country>();
 		n_list2.add(country1);
 		n_list2.add(country3);
 		n_list2.add(country5);
+	}
 
-		List<CardTypes> listp1 = new ArrayList<>();
+	private void onStart3(){
+		//List<CardTypes> listp1 = new ArrayList<>();
 		listp1.add(CardTypes.Infantry);
 		listp1.add(CardTypes.Cavalry);
 		listp1.add(CardTypes.Cavalry);
 
-		List<CardTypes> listp2 = new ArrayList<>();
+		//List<CardTypes> listp2 = new ArrayList<>();
 		listp2.add(CardTypes.Artillery);
 		listp2.add(CardTypes.Cavalry);
 		listp2.add(CardTypes.Artillery);
@@ -148,7 +146,9 @@ public class AggressiveStrategyTest {
 		list4 = new ArrayList<>();
 		list4.add(CardTypes.Artillery);
 		list4.add(CardTypes.Cavalry);
+	}
 
+	private void onStart4(){
 		player1 = new Player(9);
 		player1.setPlayerId(9);
 		player1.setPlayerName("Navjot");
@@ -202,6 +202,28 @@ public class AggressiveStrategyTest {
 		continent2.setName("Africa");
 		continent2.setCountries(n_list2);
 		continent2.setControlValue(5);
+	}
+
+	@Before
+	public void onStart() {
+		ast = new AggressiveStratery();
+		player1 = new Player(2);
+		country1 = new Country("India");
+		country2 = new Country("China");
+		country3 = new Country("Pakistan");
+		country4 = new Country("Bhutan");
+		country5 = new Country("Iran");
+		country6 = new Country("Canada");
+		country7 = new Country("Egypt");
+
+		continent1 = new Continent(4, "Asia");
+		continent2 = new Continent(5, "Africa");
+
+		onStart1();
+		onStart2();
+		onStart3();
+		onStart4();
+
 
 		ReadingFiles.CountryNameObject = new HashMap<>();
 		ReadingFiles.ContinentNameObject = new HashMap<>();
