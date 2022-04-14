@@ -29,7 +29,8 @@ public class CheaterStrategyTest {
 	CheaterStrategy cs;
 	Player player1;
 	Player player2;
-	Country country1, country2, country3, country4, country5, country6, country7;
+	Country country1;
+	Country country2, country3, country4, country5, country6, country7;
 	Continent continent1, continent2;
 	HashMap<String, Country> temp;
 	HashMap<Integer, Player> temp1;
