@@ -27,11 +27,18 @@ public class AttackTest
 	Player player1;
 	Player player2;
 	Player player3;
-	Country country1, country2, country3, country4, country5, country6, country7;
+	Country country1;
+	Country country2;
+	Country country3;
+	Country country4;
+	Country country5;
+	Country country6;
+	Country country7;
 	Continent continent1;
 	HashMap<String, Country> temp;
 	HashMap<Integer,Player> temp1;
-	List<Country> n_list,n_list1;
+	List<Country> n_list;
+	List<Country> n_list1;
 	
 	/**
 	* Method called before each test
