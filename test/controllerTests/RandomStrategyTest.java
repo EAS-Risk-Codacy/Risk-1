@@ -1,4 +1,4 @@
-package ControllerTests;
+package controllerTests;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,29 +6,28 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.BenevolentStrategy;
+import controller.RandomStrategy;
 import controller.ReadingFiles;
 import model.CardTypes;
 import model.Continent;
 import model.Country;
 import model.Player;
-import controller.HelperClass;;
 
 /**
- * This class tests Benevolent Strategy
+ * This class tests Random Strategy
  * 
  * @author navjot
  * @version 1.0
  *
  */
-public class BenevolentStrategyTest {
-	HelperClass helper = new HelperClass();
-	BenevolentStrategy bs;
+public class RandomStrategyTest {
+	RandomStrategy rs;
 	Player player1, player2, player3;
 	Country country1, country2, country3, country4, country5, country6, country7;
 	Continent continent1, continent2;
@@ -41,9 +40,10 @@ public class BenevolentStrategyTest {
 	/**
 	 * Method called before each test
 	 */
+
 	@Before
 	public void onStart() {
-		bs = new BenevolentStrategy();
+		rs = new RandomStrategy();
 		player1 = new Player(2);
 		country1 = new Country("India");
 		country2 = new Country("China");
@@ -160,7 +160,7 @@ public class BenevolentStrategyTest {
 		player2.setTotalCountriesOccupied(n_list3);
 		player2.setPlayerCards(listp2);
 
-		country1.setNeighbors(n_list);
+		country1.setNeighbors(n_list3);
 		country1.setNoOfArmies(1);
 		country1.setPlayer(player2);
 
@@ -169,8 +169,8 @@ public class BenevolentStrategyTest {
 		country2.setPlayer(player1);
 
 		country3.setNeighbors(n_list);
-		country3.setNoOfArmies(1);
-		country3.setPlayer(player1);
+		country3.setNoOfArmies(6);
+		country3.setPlayer(player2);
 
 		country6.setNeighbors(n_list);
 		country6.setNoOfArmies(1);
@@ -182,7 +182,7 @@ public class BenevolentStrategyTest {
 
 		country4.setNeighbors(n_list1);
 		country4.setNoOfArmies(2);
-		country4.setPlayer(player1);
+		country4.setPlayer(player2);
 
 		continent1.setContinentId(81);
 		continent1.setName("Asia");
@@ -218,6 +218,7 @@ public class BenevolentStrategyTest {
 	/**
 	 * Method called after each test
 	 */
+
 	@After
 	public void atEnd() {
 		ReadingFiles.CountryNameObject.clear();
@@ -228,27 +229,81 @@ public class BenevolentStrategyTest {
 	}
 
 	/**
-	 * Method tests the reinforcement phase based on benevolent strategy rules
+	 * Method tests the reinforcement phase based on random strategy rules
 	 */
 	@Test
 	public void testReinforce() {
-		List<Country> countries = player1.getMyCountries(player1);
-		Country c = countries.get(helper.getWeakestCountryIndex(countries));
-		int armies = c.getNoOfArmies() + player1.getPlayerArmiesNotDeployed();
-		bs.reinforce(player1);
-		assertEquals(armies, c.getNoOfArmies());
+		int flag = 0;
+		List<Country> list_before = player1.getMyCountries(player1);
+		Map<String, Integer> armyPerCountry = new HashMap<>();
+		for (int i = 0; i < list_before.size(); i++) {
+			armyPerCountry.put(list_before.get(i).getName(), list_before.get(i).getNoOfArmies());
+		}
+		rs.reinforce(player1);
+		list_before = player1.getMyCountries(player1);
+		for (int i = 0; i < list_before.size(); i++) {
+			int beforeCount = armyPerCountry.get(list_before.get(i).getName());
+			int afterCount = list_before.get(i).getNoOfArmies();
+			if (beforeCount < afterCount) {
+				flag = 1;
+				break;
+			}
+
+		}
+
+		assertEquals(true, flag == 1);
 	}
 
 	/**
-	 * Method tests the fortification phase based on aggressive strategy rules
+	 * Method tests the attack phase based on random strategy rules
 	 */
 	@Test
-	public void fortify() {
-		List<Country> countries = player1.getMyCountries(player1);
-		Country c = countries.get(helper.getWeakestCountryIndex(countries));
-		int armies_before = c.getNoOfArmies();
-		bs.fortify(player1);
-		assertEquals(true, c.getNoOfArmies() > armies_before);
+	public void testAttack() {
+		int flag = 0;
+		List<Country> list_before = player1.getMyCountries(player1);
+		Map<String, Integer> armyPerCountry = new HashMap<>();
+		for (int i = 0; i < list_before.size(); i++) {
+			armyPerCountry.put(list_before.get(i).getName(), list_before.get(i).getNoOfArmies());
+		}
+		rs.attack(player1);
+		list_before = player1.getMyCountries(player1);
+		for (int i = 0; i < list_before.size(); i++) {
+			int beforeCount = armyPerCountry.get(list_before.get(i).getName());
+			int afterCount = list_before.get(i).getNoOfArmies();
+			if (beforeCount != afterCount) {
+				flag = 1;
+				break;
+			}
+
+		}
+
+		assertEquals(true, flag == 1);
+
+	}
+
+	/**
+	 * Method tests the fortification phase based on random strategy rules
+	 */
+	@Test
+	public void testFortify() {
+		int flag = 0;
+		List<Country> list_before = player1.getMyCountries(player1);
+		Map<String, Integer> armyPerCountry = new HashMap<>();
+		for (int i = 0; i < list_before.size(); i++) {
+			armyPerCountry.put(list_before.get(i).getName(), list_before.get(i).getNoOfArmies());
+		}
+		rs.attack(player1);
+		list_before = player1.getMyCountries(player1);
+		for (int i = 0; i < list_before.size(); i++) {
+			int beforeCount = armyPerCountry.get(list_before.get(i).getName());
+			int afterCount = list_before.get(i).getNoOfArmies();
+			if (beforeCount != afterCount) {
+				flag = 1;
+				break;
+			}
+
+		}
+		assertEquals(true, flag == 1);
 	}
 
 }

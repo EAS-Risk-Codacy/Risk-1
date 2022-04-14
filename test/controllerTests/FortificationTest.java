@@ -1,44 +1,38 @@
-package ControllerTests;
+package controllerTests;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.AttackController;
+import controller.FortificationController;
 import controller.ReadingFiles;
 import model.Continent;
 import model.Country;
 import model.Player;
 
 /**
- * Tests the attack controller
+ * Class to test Fortification Controller
+ * 
  * @author Navjot kaur
  *
  */
-
-public class AttackTest 
-{
-	AttackController attack;
+public class FortificationTest {
+	FortificationController fortification;
 	Player player1, player2, player3;
 	Country country1, country2, country3, country4, country5, country6, country7;
-	Continent continent1;
-	HashMap<String, Country> temp;
-	HashMap<Integer,Player> temp1;
-	List<Country> n_list,n_list1;
-	
+	Continent continent1, continent2;
+
 	/**
-	* Method called before each test
-	*
-	*/
+	 * Method to create all objects
+	 */
 	@Before
-	public void onStart()
-	{
-		attack = new AttackController();
+	public void onStart() {
+		fortification = new FortificationController();
 		player1 = new Player(2);
 		country1 = new Country("India");
 		country2 = new Country("China");
@@ -47,6 +41,8 @@ public class AttackTest
 		country5 = new Country("Iran");
 		country6 = new Country("Canada");
 		country7 = new Country("Egypt");
+		continent1 = new Continent(4, "Asia");
+		continent2 = new Continent(5, "Africa");
 
 		country1.setContinentId(1);
 		country1.setCountryId(11);
@@ -76,10 +72,12 @@ public class AttackTest
 		country7.setCountryId(71);
 		country7.setName("Egypt");
 
-		n_list = new ArrayList<Country>();
+		List<Country> n_list = new ArrayList<Country>();
 		n_list.add(country2);
 		n_list.add(country5);
 		n_list.add(country6);
+		n_list.add(country3);
+		
 
 		List<Country> n_list4 = new ArrayList<Country>();
 		n_list4.add(country2);
@@ -90,7 +88,7 @@ public class AttackTest
 		List<Country> n_list3 = new ArrayList<Country>();
 		n_list3.add(country3);
 
-		n_list1 = new ArrayList<Country>();
+		List<Country> n_list1 = new ArrayList<Country>();
 		n_list1.add(country1);
 		n_list1.add(country5);
 		n_list1.add(country6);
@@ -99,6 +97,7 @@ public class AttackTest
 		n_list2.add(country1);
 		n_list2.add(country3);
 		n_list2.add(country5);
+		n_list2.add(country4);
 
 		player1 = new Player(9);
 		player1.setPlayerId(9);
@@ -114,113 +113,94 @@ public class AttackTest
 
 		country1.setNeighbors(n_list);
 		country1.setNoOfArmies(1);
-		country1.setPlayer(player2);
+		country1.setPlayer(player1);
+		country1.setContinent(continent1);
 
 		country2.setNeighbors(n_list3);
 		country2.setNoOfArmies(4);
 		country2.setPlayer(player1);
+		country2.setContinent(continent1);
 
 		country3.setNeighbors(n_list);
 		country3.setNoOfArmies(4);
 		country3.setPlayer(player1);
+		country3.setContinent(continent1);
 
 		country6.setNeighbors(n_list);
-		country6.setNoOfArmies(0);
-		country6.setPlayer(player2);
+		country6.setNoOfArmies(4);
+		country6.setPlayer(player1);
+		country6.setContinent(continent2);
 
 		country5.setNeighbors(n_list3);
 		country5.setNoOfArmies(4);
 		country5.setPlayer(player2);
+		country5.setContinent(continent2);
 
 		country4.setNeighbors(n_list1);
 		country4.setNoOfArmies(2);
 		country4.setPlayer(player1);
+		country4.setContinent(continent2);
 		
-		ReadingFiles.CountryNameObject = new HashMap<>();
-		ReadingFiles.playerId = new HashMap<>();
-		temp = ReadingFiles.CountryNameObject;
-		temp1 = ReadingFiles.playerId;
-		ReadingFiles.playerId.clear();
-		ReadingFiles.CountryNameObject.clear();
-		ReadingFiles.CountryNameObject.put(country1.getName(), country1);
-		ReadingFiles.CountryNameObject.put(country2.getName(), country2);
-		ReadingFiles.CountryNameObject.put(country3.getName(), country3);
-		ReadingFiles.CountryNameObject.put(country4.getName(), country4);
-		ReadingFiles.CountryNameObject.put(country5.getName(), country5);
-		ReadingFiles.CountryNameObject.put(country6.getName(), country6);
-		
-		ReadingFiles.playerId.put(player1.getPlayerId(),player1);
-		ReadingFiles.playerId.put(player2.getPlayerId(),player2);
-		
-	}
-	/**
-	*Method called after each test
-	*
-	*/
-	@After
-	public void atEnd() {
-		ReadingFiles.CountryNameObject.clear();
-		ReadingFiles.playerId.clear();
-		ReadingFiles.CountryNameObject = temp;
-		ReadingFiles.playerId = temp1;
+		continent1.setContinentId(81);
+		continent1.setName("Asia");
+		continent1.setCountries(n_list);
+		continent1.setControlValue(4);
 
-	}
-	/**
-	*Tests Countries of the player
-	*
-	*/
-	@Test
-	public void testGetMyCountries() {
-		assertEquals(3, attack.getMyCountries(player2).size());
+		continent2.setContinentId(82);
+		continent2.setName("Africa");
+		continent2.setCountries(n_list2);
+		continent2.setControlValue(5);
+
+		ReadingFiles.ContinentNameObject = new HashMap<>();
+		ReadingFiles.ContinentNameObject.put(continent1.getName(), continent1);
+		ReadingFiles.ContinentNameObject.put(continent2.getName(), continent2);
 	}
 
 	/**
-	*Tests list neighbor countries of the player
-	*
-	*/
+	 * Tests path between countries
+	 */
 	@Test
-	public void testGetMyNeighborsForAttack()
-	{
-		assertEquals(n_list,attack.getMyNeighborsForAttack(country1));
+	public void testHasPathBFS() {
+		assertEquals(true, fortification.hasPathBFS2(country1, country3));
 	}
+
 	/**
-	*Tests attack simulator
-	*
-	*/
+	 * Tests path between countries
+	 */
 	@Test
-	public void testAttackButton()
-	{
-		assertEquals("Wrong input",attack.attackButton(country3, country6, 3,1,false));
+	public void test1HasPathBFS() {
+		assertNotEquals(true, fortification.hasPathBFS2(country2, country4));
 	}
+
 	/**
-	*Tests attack simulator
-	*
-	*/
+	 * Tests can armies be moved or not
+	 */
 	@Test
-	public void testAttackButton1()
-	{
-		assertEquals("Your country must have more than one army",attack.attackButton(country1,country2,3,1,false));
+	public void testMoveArmies() {
+		assertEquals("less army", fortification.moveArmies(country1, country3, 2));
 	}
-	
+
 	/**
-	*Tests attack simulator
-	*
-	*/
+	 * Tests can armies be moved or not
+	 */
 	@Test
-	public void testAttackButton2()
-	{
-		assertEquals("",attack.attackButton(country2,country1,3,1,true));		
+	public void test1MoveArmies() {
+		assertEquals("You can only move3", fortification.moveArmies(country2, country3, 5));
 	}
-	
+
 	/**
-	*Tests update owner of the country
-	*
-	*/
+	 * Tests can armies be moved or not
+	 */
 	@Test
-	public void testUpdateOwner()
-	{
-		attack.updateOwner(country1, player1);
-		assertEquals(player1,country1.getOwner());
+	public void test2MoveArmies() {
+		assertEquals("NO path", fortification.moveArmies(country2, country5, 3));
 	}
-	
+
+	/**
+	 * Tests can armies be moved or not
+	 */
+	@Test
+	public void test3MoveArmies() {
+		assertEquals("", fortification.moveArmies(country2, country3, 3));
+	}
 }
