@@ -42,7 +42,6 @@ public class AttackTest
 	
 	/**
 	* Method called before each test
-	*
 	*/
 	@Before
 	public void onStart()
@@ -185,7 +184,6 @@ public class AttackTest
 
 	/**
 	*Tests list neighbor countries of the player
-	*
 	*/
 	@Test
 	public void testGetMyNeighborsForAttack()
@@ -194,7 +192,6 @@ public class AttackTest
 	}
 	/**
 	*Tests attack simulator
-	*
 	*/
 	@Test
 	public void testAttackButton()
@@ -203,7 +200,6 @@ public class AttackTest
 	}
 	/**
 	*Tests attack simulator
-	*
 	*/
 	@Test
 	public void testAttackButton1()
@@ -213,7 +209,6 @@ public class AttackTest
 	
 	/**
 	*Tests attack simulator
-	*
 	*/
 	@Test
 	public void testAttackButton2()
@@ -223,7 +218,6 @@ public class AttackTest
 	
 	/**
 	*Tests update owner of the country
-	*
 	*/
 	@Test
 	public void testUpdateOwner()
