@@ -31,7 +31,7 @@ public class OnStart {
     public void onStart() {
         player1 = new Player(2);
 
-        onStartCountrys();
+        onStartCountry();
         onStartPlayers();
 
         ReadingFiles.CountryNameObject = new HashMap<>();
@@ -52,7 +52,7 @@ public class OnStart {
     }
 
     /** this method will create the country for the tests */
-    public void onStartCountrys() {
+    public void onStartCountry() {
         country1 = new Country("India");
         country2 = new Country("China");
         country3 = new Country("Pakistan");
