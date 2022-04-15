@@ -1,7 +1,6 @@
 package controller_tests;
 
 import controller.ReadingFiles;
-import model.Continent;
 import model.Country;
 import model.Player;
 import org.junit.Before;
@@ -13,7 +12,6 @@ import java.util.List;
 public class OnStart {
     Player player1;
     Player player2;
-    Player player3;
     Country country1;
     Country country2;
     Country country3;
@@ -21,7 +19,6 @@ public class OnStart {
     Country country5;
     Country country6;
     Country country7;
-    Continent continent1;
     HashMap<String, Country> temp;
     HashMap<Integer, Player> temp1;
     List<Country> n_list;
@@ -92,26 +89,26 @@ public class OnStart {
 
     /** this method will create the players and assign the country to them for the tests */
     public void onStartPlayers() {
-        n_list = new ArrayList<Country>();
+        n_list = new ArrayList<>();
         n_list.add(country2);
         n_list.add(country5);
         n_list.add(country6);
 
-        List<Country> n_list4 = new ArrayList<Country>();
+        List<Country> n_list4 = new ArrayList<>();
         n_list4.add(country2);
         n_list4.add(country5);
         n_list4.add(country3);
         n_list4.add(country1);
 
-        List<Country> n_list3 = new ArrayList<Country>();
+        List<Country> n_list3 = new ArrayList<>();
         n_list3.add(country3);
 
-        n_list1 = new ArrayList<Country>();
+        n_list1 = new ArrayList<>();
         n_list1.add(country1);
         n_list1.add(country5);
         n_list1.add(country6);
 
-        List<Country> n_list2 = new ArrayList<Country>();
+        List<Country> n_list2 = new ArrayList<>();
         n_list2.add(country1);
         n_list2.add(country3);
         n_list2.add(country5);
