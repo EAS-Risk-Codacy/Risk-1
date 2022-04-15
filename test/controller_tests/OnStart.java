@@ -1,5 +1,6 @@
 package controller_tests;
 
+import controller.ReadingFiles;
 import model.Continent;
 import model.Country;
 import model.Player;
@@ -124,5 +125,21 @@ public class OnStart {
         country4.setNeighbors(n_list1);
         country4.setNoOfArmies(2);
         country4.setPlayer(player1);
+
+        ReadingFiles.CountryNameObject = new HashMap<>();
+        ReadingFiles.playerId = new HashMap<>();
+        temp = ReadingFiles.CountryNameObject;
+        temp1 = ReadingFiles.playerId;
+        ReadingFiles.playerId.clear();
+        ReadingFiles.CountryNameObject.clear();
+        ReadingFiles.CountryNameObject.put(country1.getName(), country1);
+        ReadingFiles.CountryNameObject.put(country2.getName(), country2);
+        ReadingFiles.CountryNameObject.put(country3.getName(), country3);
+        ReadingFiles.CountryNameObject.put(country4.getName(), country4);
+        ReadingFiles.CountryNameObject.put(country5.getName(), country5);
+        ReadingFiles.CountryNameObject.put(country6.getName(), country6);
+
+        ReadingFiles.playerId.put(player1.getPlayerId(),player1);
+        ReadingFiles.playerId.put(player2.getPlayerId(),player2);
     }
 }

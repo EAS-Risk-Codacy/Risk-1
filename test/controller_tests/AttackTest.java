@@ -1,7 +1,6 @@
 package controller_tests;
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -51,23 +50,6 @@ public class AttackTest
 		start.onStart();
 
 		attack = new AttackController();
-
-		ReadingFiles.CountryNameObject = new HashMap<>();
-		ReadingFiles.playerId = new HashMap<>();
-		temp = ReadingFiles.CountryNameObject;
-		temp1 = ReadingFiles.playerId;
-		ReadingFiles.playerId.clear();
-		ReadingFiles.CountryNameObject.clear();
-		ReadingFiles.CountryNameObject.put(country1.getName(), country1);
-		ReadingFiles.CountryNameObject.put(country2.getName(), country2);
-		ReadingFiles.CountryNameObject.put(country3.getName(), country3);
-		ReadingFiles.CountryNameObject.put(country4.getName(), country4);
-		ReadingFiles.CountryNameObject.put(country5.getName(), country5);
-		ReadingFiles.CountryNameObject.put(country6.getName(), country6);
-		
-		ReadingFiles.playerId.put(player1.getPlayerId(),player1);
-		ReadingFiles.playerId.put(player2.getPlayerId(),player2);
-		
 	}
 	/**
 	*Method called after each test
