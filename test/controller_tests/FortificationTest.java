@@ -25,7 +25,7 @@ public class FortificationTest {
 	FortificationController fortification;
 	Player player1;
 	Player player2;
-	Country countryindia;
+	Country countryIndia;
 	Country countryChina;
 	Country countryPakistan;
 	Country countryBhutan;
@@ -76,7 +76,7 @@ public class FortificationTest {
 	public void onStart() {
 		fortification = new FortificationController();
 		player1 = new Player(2);
-		countryindia = new Country("India");
+		countryIndia = new Country("India");
 		countryChina = new Country("China");
 		countryPakistan = new Country("Pakistan");
 		countryBhutan = new Country("Bhutan");
@@ -86,7 +86,7 @@ public class FortificationTest {
 		continentAsia = new Continent(4, "Asia");
 		continentAfrica = new Continent(5, "Africa");
 
-		setCoutryGeneral(countryindia, 1, 11, "India");
+		setCoutryGeneral(countryIndia, 1, 11, "India");
 		setCoutryGeneral(countryChina, 2, 21, "China");
 		setCoutryGeneral(countryPakistan, 3, 31, "Pakistan");
 		setCoutryGeneral(countryBhutan, 4, 41, "Bhutan");
@@ -96,13 +96,13 @@ public class FortificationTest {
 
 		Country[] listCountries1 = {countryChina, countryIran, countryCanada, countryPakistan};
 		List<Country> n_list = iniListcountries(listCountries1);
-		Country[] listCountries2 = {countryChina, countryIran, countryPakistan, countryindia};
+		Country[] listCountries2 = {countryChina, countryIran, countryPakistan, countryIndia};
 		List<Country> n_list4 = iniListcountries(listCountries2);
 		Country[] listCountries3 = {countryPakistan};
 		List<Country> n_list3 = iniListcountries(listCountries3);
-		Country[] listCountries4 = {countryindia, countryIran, countryCanada};
+		Country[] listCountries4 = {countryIndia, countryIran, countryCanada};
 		List<Country> n_list1 = iniListcountries(listCountries4);
-		Country[] listCountries5 = {countryindia, countryPakistan, countryIran, countryBhutan};
+		Country[] listCountries5 = {countryIndia, countryPakistan, countryIran, countryBhutan};
 		List<Country> n_list2 = iniListcountries(listCountries5);
 
 		player1 = new Player(9);
@@ -110,7 +110,7 @@ public class FortificationTest {
 		player2 = new Player(10);
 		iniPlayer(player2,10, "xyz", 8, n_list1);
 
-		setCountryspecific(countryindia, n_list, 1, player1, continentAsia);
+		setCountryspecific(countryIndia, n_list, 1, player1, continentAsia);
 		setCountryspecific(countryChina, n_list3, 4, player1, continentAsia);
 		setCountryspecific(countryPakistan, n_list, 4, player1, continentAsia);
 		setCountryspecific(countryCanada, n_list, 4, player1, continentAfrica);
@@ -130,7 +130,7 @@ public class FortificationTest {
 	 */
 	@Test
 	public void testHasPathBFS() {
-		assertEquals(true, fortification.hasPathBFS2(countryindia, countryPakistan));
+		assertEquals(true, fortification.hasPathBFS2(countryIndia, countryPakistan));
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class FortificationTest {
 	 */
 	@Test
 	public void testMoveArmies() {
-		assertEquals("less army", fortification.moveArmies(countryindia, countryPakistan, 2));
+		assertEquals("less army", fortification.moveArmies(countryIndia, countryPakistan, 2));
 	}
 
 	/**
