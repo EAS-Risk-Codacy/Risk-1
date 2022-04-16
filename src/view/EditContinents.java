@@ -20,8 +20,8 @@ import model.Country;
  */
 public class EditContinents {
 	private static JFrame MapFrame;
-	private JLabel HeaderLabel;
-	private JLabel HeaderLabel2;
+
+
 	private static JButton SelectButton;
 	private static JButton SetButton;
 	private static JButton NextButton;
@@ -71,6 +71,8 @@ public class EditContinents {
 	 * Set the Continents in the view
 	 */
 	public void setUp() {
+		JLabel HeaderLabel;
+		JLabel HeaderLabel2;
 
 		if (ReadingFiles.CountryNameObject != null)
 			MapFrame = new JFrame("Edit Map");
@@ -86,7 +88,7 @@ public class EditContinents {
 		ContinentsCombo = new JComboBox(Maps);
 		ContinentsCombo.setBounds(120, 150, 200, 20);
 
-		for (int i = 0, k = 0, j = 30; i < ReadingFiles.CountriesNames.size(); i++, j = j + 30) {
+		for (int i = 0, j = 30; i < ReadingFiles.CountriesNames.size(); i++, j = j + 30) {
 			CheckBoxes[i] = new JCheckBox(ReadingFiles.CountriesNames.get(i));
 		}
 		SelectButton = new JButton("SELECT");
@@ -102,7 +104,6 @@ public class EditContinents {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				MapFrame.dispose();
-				EditCountries e = new EditCountries();
 			}
 		});
 
