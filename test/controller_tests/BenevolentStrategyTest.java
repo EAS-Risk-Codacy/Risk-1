@@ -58,7 +58,6 @@ public class BenevolentStrategyTest {
 	public void onStart() {
 
 		OnStart start = new OnStart();
-		start.onStart();
 
 		bs = new BenevolentStrategy();
 
