@@ -1,12 +1,11 @@
 package controller_tests;
 
-import controller.ReadingFiles;
+import model.CardTypes;
+import model.Continent;
 import model.Country;
 import model.Player;
-import org.junit.Before;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.awt.*;
 import java.util.List;
 
 public class OnStart {
@@ -27,5 +26,19 @@ public class OnStart {
         country.setNeighbors(list);
         country.setNoOfArmies(army);
         country.setPlayer(player);
+    }
+
+    public void setContinentData(Continent continent, int id, String name, List<Country> countries, int bonus) {
+        continent.setContinentId(id);
+        continent.setName(name);
+        continent.setCountries(countries);
+        continent.setControlValue(bonus);
+    }
+
+    public void setPlayerSpecificData(Player player, Color color, int armyNotDeployed, List<CardTypes> cards, List<Continent> continentsOccupied) {
+        player.setPlayerColor(color);
+        player.setPlayerTotalArmiesNotDeployed(armyNotDeployed);
+        player.setPlayerCards(cards);
+        player.setContinentsOccupied(continentsOccupied);
     }
 }

@@ -1,9 +1,11 @@
 package controller_tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,7 +23,7 @@ import controller.HelperClass;
 
 /**
  * This class tests Benevolent Strategy
- * 
+ *
  * @author navjot
  * @version 1.0
  *
@@ -31,98 +33,97 @@ public class BenevolentStrategyTest {
 	BenevolentStrategy bs;
 	Player player1;
 	Player player2;
-	Player player3;
-	Country country1;
-	Country country2;
-	Country country3;
-	Country country4;
-	Country country5;
-	Country country6;
-	Country country7;
+	Country countryIndia;
+	Country countryChina;
+	Country countryPakistan;
+	Country countryBhutan;
+	Country countryIran;
+	Country countryCanada;
+	Country countryEgypt;
 	Continent continent1;
 	Continent continent2;
 	HashMap<String, Country> temp;
 	HashMap<Integer, Player> temp1;
 	HashMap<String, Continent> temp3;
-	List<Country> n_list;
-	List<Country> n_list1;
-	List<CardTypes> list1;
-	List<CardTypes> list2;
-	List<CardTypes> list3;
-	List<CardTypes> list4;
 
 	/**
 	 * Method called before each test
 	 */
 	@Before
-	public void onStart() {
-
+	public void onStart()
+	{
 		OnStart start = new OnStart();
 
 		bs = new BenevolentStrategy();
+		player1 = new Player(2);
+
+		countryIndia = new Country("India");
+		countryChina = new Country("China");
+		countryPakistan = new Country("Pakistan");
+		countryBhutan = new Country("Bhutan");
+		countryIran = new Country("Iran");
+		countryCanada = new Country("Canada");
+		countryEgypt = new Country("Egypt");
 
 		continent1 = new Continent(4, "Asia");
 		continent2 = new Continent(5, "Africa");
 
-		List<CardTypes> listp1 = new ArrayList<>();
-		listp1.add(CardTypes.Infantry);
-		listp1.add(CardTypes.Cavalry);
-		listp1.add(CardTypes.Cavalry);
+		start.setCountryData(countryIndia,1,11);
+		start.setCountryData(countryChina,2,21);
+		start.setCountryData(countryPakistan,3,31);
+		start.setCountryData(countryBhutan,4,41);
+		start.setCountryData(countryIran,5,51);
+		start.setCountryData(countryCanada,6,61);
+		start.setCountryData(countryEgypt,7,71);
 
-		List<CardTypes> listp2 = new ArrayList<>();
-		listp2.add(CardTypes.Artillery);
-		listp2.add(CardTypes.Cavalry);
-		listp2.add(CardTypes.Artillery);
-		listp2.add(CardTypes.Infantry);
-		listp2.add(CardTypes.Infantry);
-		listp2.add(CardTypes.Cavalry);
+		Country[] listCountries = {countryChina, countryIran, countryPakistan, countryIndia};
+		List<Country> n_list = new ArrayList<>(Arrays.asList(listCountries));
+		Country[] listCountries1 = {countryIndia, countryIran, countryCanada};
+		List<Country> n_list1 = new ArrayList<>(Arrays.asList(listCountries1));
+		Country[] listCountries2 = {countryIndia, countryPakistan, countryIran};
+		List<Country> n_list2 = new ArrayList<>(Arrays.asList(listCountries2));
+		Country[] listCountries3 = {countryPakistan};
+		List<Country> n_list3 = new ArrayList<>(Arrays.asList(listCountries3));
 
-		list1 = new ArrayList<>();
-		list1.add(CardTypes.Artillery);
-		list1.add(CardTypes.Cavalry);
-		list1.add(CardTypes.Infantry);
+		CardTypes[] listCard = {CardTypes.Infantry, CardTypes.Cavalry, CardTypes.Cavalry};
+		List<CardTypes> n_listCard = new ArrayList<>(Arrays.asList(listCard));
+		CardTypes[] listCard1 = {CardTypes.Artillery, CardTypes.Cavalry, CardTypes.Artillery, CardTypes.Infantry, CardTypes.Infantry, CardTypes.Cavalry};
+		List<CardTypes> n_listCard1 = new ArrayList<>(Arrays.asList(listCard1));
 
-		list2 = new ArrayList<>();
-		list2.add(CardTypes.Artillery);
-		list2.add(CardTypes.Artillery);
-		list2.add(CardTypes.Artillery);
+		player1 = new Player(9);
+		start.setPlayerData(player1, 9, "Navjot", 7, n_list);
+		start.setPlayerSpecificData(player1, new Color(255,255,0), 4, n_listCard, null);
+		player2 = new Player(10);
+		start.setPlayerData(player2, 10, "Neeraj", 8, n_list3);
+		start.setPlayerSpecificData(player2, new Color(0,191,255), 0, n_listCard1, null);
 
-		list3 = new ArrayList<>();
-		list3.add(CardTypes.Artillery);
-		list3.add(CardTypes.Cavalry);
-		list3.add(CardTypes.Artillery);
+		start.setCountrySpecificData(countryIndia, n_list, 1, player2);
+		start.setCountrySpecificData(countryChina, n_list3, 4, player1);
+		start.setCountrySpecificData(countryPakistan, n_list, 1, player1);
+		start.setCountrySpecificData(countryCanada, n_list, 1, player2);
+		start.setCountrySpecificData(countryIran, n_list3, 5, player2);
+		start.setCountrySpecificData(countryBhutan, n_list1, 2, player1);
 
-		list4 = new ArrayList<>();
-		list4.add(CardTypes.Artillery);
-		list4.add(CardTypes.Cavalry);
-
-
-		player1.setPlayerColor(new Color(255, 255, 0));
-		player1.setPlayerTotalArmiesNotDeployed(4);
-		player1.setContinentsOccupied(null);
-		player1.setPlayerCards(listp1);
-
-		player2.setPlayerColor(new Color(0 - 191 - 255));
-		player2.setPlayerTotalArmiesNotDeployed(0);
-		player2.setContinentsOccupied(null);
-		player2.setPlayerCards(listp2);
+		start.setContinentData(continent1, 81, "Asia", n_list, 4);
+		start.setContinentData(continent2, 82, "Africa", n_list2, 5);
 
 
-		continent1.setContinentId(81);
-		continent1.setName("Asia");
-		continent1.setCountries(n_list);
-		continent1.setControlValue(4);
-
-		continent2.setContinentId(82);
-		continent2.setName("Africa");
-		continent2.setCountries(n_list1);
-		continent2.setControlValue(5);
-
+		ReadingFiles.CountryNameObject = new HashMap<>();
 		ReadingFiles.ContinentNameObject = new HashMap<>();
+		ReadingFiles.playerId = new HashMap<>();
+		temp = ReadingFiles.CountryNameObject;
+		temp1 = ReadingFiles.playerId;
 		temp3 = ReadingFiles.ContinentNameObject;
-		ReadingFiles.ContinentNameObject.clear();
 		ReadingFiles.ContinentNameObject.put(continent1.getName(), continent1);
 		ReadingFiles.ContinentNameObject.put(continent2.getName(), continent2);
+		ReadingFiles.CountryNameObject.put(countryIndia.getName(), countryIndia);
+		ReadingFiles.CountryNameObject.put(countryChina.getName(), countryChina);
+		ReadingFiles.CountryNameObject.put(countryPakistan.getName(), countryPakistan);
+		ReadingFiles.CountryNameObject.put(countryBhutan.getName(), countryBhutan);
+		ReadingFiles.CountryNameObject.put(countryIran.getName(), countryIran);
+		ReadingFiles.CountryNameObject.put(countryCanada.getName(), countryCanada);
+		ReadingFiles.playerId.put(player1.getPlayerId(), player1);
+		ReadingFiles.playerId.put(player2.getPlayerId(), player2);
 	}
 
 	/**
@@ -158,7 +159,7 @@ public class BenevolentStrategyTest {
 		Country c = countries.get(helper.getWeakestCountryIndex(countries));
 		int armies_before = c.getNoOfArmies();
 		bs.fortify(player1);
-		assertEquals(true, c.getNoOfArmies() > armies_before);
+		assertTrue(c.getNoOfArmies() > armies_before);
 	}
 
 }
