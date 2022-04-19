@@ -10,8 +10,8 @@ import java.util.List;
 
 public class OnStart {
 
-    protected void setCountryData(Country country, int idCountinent, int idCountry){
-        country.setContinentId(idCountinent);
+    protected void setCountryData(Country country, int idContinent, int idCountry){
+        country.setContinentId(idContinent);
         country.setCountryId(idCountry);
     }
 
