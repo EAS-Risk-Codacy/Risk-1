@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Arrays;
 
 import org.junit.After;
 import org.junit.Before;
@@ -28,14 +29,32 @@ import model.Player;
  */
 public class RandomStrategyTest {
 	RandomStrategy rs;
-	Player player1, player2, player3;
-	Country country1, country2, country3, country4, country5, country6, country7;
-	Continent continent1, continent2;
+	Player player1;
+	Player player2;
+	Player player3;
+	Country countryIndia;
+	Country countryChina;
+	Country countryPakistan;
+	Country countryBhutan;
+	Country countryIran;
+	Country countryCanada;
+	Country countryEgypt;
+	Continent continentAsia;
+	Continent continentAfrica;
 	HashMap<String, Country> temp;
 	HashMap<Integer, Player> temp1;
 	HashMap<String, Continent> temp3;
-	List<Country> n_list, n_list1;
-	List<CardTypes> list1, list2, list3, list4;
+	List<Country> n_list;
+	List<Country> n_list1;
+	List<Country> n_list2;
+	List<Country> n_list3;
+	List<Country> n_list4;
+	List<CardTypes> listp1;
+	List<CardTypes> listp2;
+	List<CardTypes> listp3;
+	List<CardTypes> listp4;
+	List<CardTypes> listp5;
+	List<CardTypes> listp6;
 
 	/**
 	 * Method called before each test
@@ -43,156 +62,78 @@ public class RandomStrategyTest {
 
 	@Before
 	public void onStart() {
+		OnStart start = new OnStart();
+
 		rs = new RandomStrategy();
-		player1 = new Player(2);
-		country1 = new Country("India");
-		country2 = new Country("China");
-		country3 = new Country("Pakistan");
-		country4 = new Country("Bhutan");
-		country5 = new Country("Iran");
-		country6 = new Country("Canada");
-		country7 = new Country("Egypt");
+		countryIndia = new Country("India");
+		countryChina = new Country("China");
+		countryPakistan = new Country("Pakistan");
+		countryBhutan = new Country("Bhutan");
+		countryIran = new Country("Iran");
+		countryCanada = new Country("Canada");
+		countryEgypt = new Country("Egypt");
 
-		continent1 = new Continent(4, "Asia");
-		continent2 = new Continent(5, "Africa");
+		continentAsia = new Continent(4, "Asia");
+		continentAfrica = new Continent(5, "Africa");
 
-		country1.setContinentId(1);
-		country1.setCountryId(11);
-		country1.setName("India");
+		start.setCountryData(countryIndia, 1, 11);
+		start.setCountryData(countryChina, 2, 21);
+		start.setCountryData(countryPakistan, 3, 31);
+		start.setCountryData(countryBhutan, 4, 41);
+		start.setCountryData(countryIran, 5, 51);
+		start.setCountryData(countryCanada, 6, 61);
+		start.setCountryData(countryEgypt, 7, 71);
 
-		country2.setContinentId(2);
-		country2.setCountryId(21);
-		country2.setName("China");
+		Country[] listCountries1 = {countryChina, countryIran, countryCanada};
+		n_list = new ArrayList<>(Arrays.asList(listCountries1));
 
-		country3.setContinentId(3);
-		country3.setCountryId(31);
-		country3.setName("Pakistan");
+		Country[] listCountries2 = {countryChina, countryIran, countryPakistan, countryIndia};
+		n_list4 = new ArrayList<>(Arrays.asList(listCountries2));
 
-		country4.setContinentId(4);
-		country4.setCountryId(41);
-		country4.setName("Bhutan");
+		Country[] listCountries3 = {countryPakistan};
+		n_list3 = new ArrayList<>(Arrays.asList(listCountries3));
 
-		country5.setContinentId(5);
-		country5.setCountryId(51);
-		country5.setName("Iran");
+		Country[] listCountries4 = {countryIndia, countryIran, countryCanada};
+		n_list1 = new ArrayList<>(Arrays.asList(listCountries4));
 
-		country6.setContinentId(6);
-		country6.setCountryId(61);
-		country6.setName("Canada");
+		Country[] listCountries5 = {countryIndia, countryPakistan, countryIran};
+		n_list2 = new ArrayList<>(Arrays.asList(listCountries5));
 
-		country7.setContinentId(7);
-		country7.setCountryId(71);
-		country7.setName("Egypt");
+		CardTypes[] cardTypes1 = {CardTypes.Infantry, CardTypes.Cavalry, CardTypes.Cavalry};
+		listp1 = new ArrayList<>(Arrays.asList(cardTypes1));
 
-		n_list = new ArrayList<Country>();
-		n_list.add(country2);
-		n_list.add(country5);
-		n_list.add(country6);
+		CardTypes[] cardTypes2 = {CardTypes.Artillery, CardTypes.Cavalry, CardTypes.Artillery, CardTypes.Infantry, CardTypes.Infantry, CardTypes.Cavalry};
+		listp2 = new ArrayList<>(Arrays.asList(cardTypes2));
 
-		List<Country> n_list4 = new ArrayList<Country>();
-		n_list4.add(country2);
-		n_list4.add(country5);
-		n_list4.add(country3);
-		n_list4.add(country1);
+		CardTypes[] cardTypes3 = {CardTypes.Artillery, CardTypes.Cavalry, CardTypes.Infantry};
+		listp3 = new ArrayList<>(Arrays.asList(cardTypes3));
 
-		List<Country> n_list3 = new ArrayList<Country>();
-		n_list3.add(country3);
+		CardTypes[] cardTypes4 = {CardTypes.Artillery, CardTypes.Artillery, CardTypes.Artillery};
+		listp4 = new ArrayList<>(Arrays.asList(cardTypes4));
 
-		n_list1 = new ArrayList<Country>();
-		n_list1.add(country1);
-		n_list1.add(country5);
-		n_list1.add(country6);
+		CardTypes[] cardTypes5 = {CardTypes.Artillery, CardTypes.Cavalry, CardTypes.Artillery};
+		listp5 = new ArrayList<>(Arrays.asList(cardTypes5));
 
-		List<Country> n_list2 = new ArrayList<Country>();
-		n_list2.add(country1);
-		n_list2.add(country3);
-		n_list2.add(country5);
-
-		List<CardTypes> listp1 = new ArrayList<>();
-		listp1.add(CardTypes.Infantry);
-		listp1.add(CardTypes.Cavalry);
-		listp1.add(CardTypes.Cavalry);
-
-		List<CardTypes> listp2 = new ArrayList<>();
-		listp2.add(CardTypes.Artillery);
-		listp2.add(CardTypes.Cavalry);
-		listp2.add(CardTypes.Artillery);
-		listp2.add(CardTypes.Infantry);
-		listp2.add(CardTypes.Infantry);
-		listp2.add(CardTypes.Cavalry);
-
-		list1 = new ArrayList<>();
-		list1.add(CardTypes.Artillery);
-		list1.add(CardTypes.Cavalry);
-		list1.add(CardTypes.Infantry);
-
-		list2 = new ArrayList<>();
-		list2.add(CardTypes.Artillery);
-		list2.add(CardTypes.Artillery);
-		list2.add(CardTypes.Artillery);
-
-		list3 = new ArrayList<>();
-		list3.add(CardTypes.Artillery);
-		list3.add(CardTypes.Cavalry);
-		list3.add(CardTypes.Artillery);
-
-		list4 = new ArrayList<>();
-		list4.add(CardTypes.Artillery);
-		list4.add(CardTypes.Cavalry);
+		CardTypes[] cardTypes6 = {CardTypes.Artillery, CardTypes.Cavalry};
+		listp6 = new ArrayList<>(Arrays.asList(cardTypes6));
 
 		player1 = new Player(9);
-		player1.setPlayerId(9);
-		player1.setPlayerName("Navjot");
-		player1.setPlayerColor(new Color(255, 255, 0));
-		player1.setPlayerTotalArmiesNotDeployed(4);
-		player1.setContinentsOccupied(null);
-		player1.setPlayerArmies(7);
-		player1.setTotalCountriesOccupied(n_list);
-		player1.setPlayerCards(listp1);
+		start.setPlayerData(player1, 9, "Navjot", 7, n_list);
+		start.setPlayerSpecificData(player1, new Color(255, 255, 0), 4, listp1, null);
 
 		player2 = new Player(10);
-		player2.setPlayerId(10);
-		player2.setPlayerName("Neeraj");
-		player2.setPlayerColor(new Color(0 - 191 - 255));
-		player2.setPlayerTotalArmiesNotDeployed(0);
-		player2.setContinentsOccupied(null);
-		player2.setPlayerArmies(8);
-		player2.setTotalCountriesOccupied(n_list3);
-		player2.setPlayerCards(listp2);
+		start.setPlayerData(player2, 10, "Naeeraj", 8, n_list3);
+		start.setPlayerSpecificData(player2, new Color(0, 191, 255), 0, listp2, null);
 
-		country1.setNeighbors(n_list3);
-		country1.setNoOfArmies(1);
-		country1.setPlayer(player2);
+		start.setCountrySpecificData(countryIndia, n_list3, 1, player2);
+		start.setCountrySpecificData(countryChina, n_list3, 4, player1);
+		start.setCountrySpecificData(countryPakistan, n_list, 6, player2);
+		start.setCountrySpecificData(countryCanada, n_list, 1, player2);
+		start.setCountrySpecificData(countryIran, n_list3, 5, player2);
+		start.setCountrySpecificData(countryBhutan, n_list1, 2, player2);
 
-		country2.setNeighbors(n_list3);
-		country2.setNoOfArmies(4);
-		country2.setPlayer(player1);
-
-		country3.setNeighbors(n_list);
-		country3.setNoOfArmies(6);
-		country3.setPlayer(player2);
-
-		country6.setNeighbors(n_list);
-		country6.setNoOfArmies(1);
-		country6.setPlayer(player2);
-
-		country5.setNeighbors(n_list3);
-		country5.setNoOfArmies(5);
-		country5.setPlayer(player2);
-
-		country4.setNeighbors(n_list1);
-		country4.setNoOfArmies(2);
-		country4.setPlayer(player2);
-
-		continent1.setContinentId(81);
-		continent1.setName("Asia");
-		continent1.setCountries(n_list);
-		continent1.setControlValue(4);
-
-		continent2.setContinentId(82);
-		continent2.setName("Africa");
-		continent2.setCountries(n_list2);
-		continent2.setControlValue(5);
+		start.setContinentData(continentAsia, 81, "Asia", n_list, 4);
+		start.setContinentData(continentAfrica, 82, "Africa", n_list2, 5);
 
 		ReadingFiles.CountryNameObject = new HashMap<>();
 		ReadingFiles.ContinentNameObject = new HashMap<>();
@@ -203,14 +144,14 @@ public class RandomStrategyTest {
 		ReadingFiles.ContinentNameObject.clear();
 		ReadingFiles.playerId.clear();
 		ReadingFiles.CountryNameObject.clear();
-		ReadingFiles.ContinentNameObject.put(continent1.getName(), continent1);
-		ReadingFiles.ContinentNameObject.put(continent2.getName(), continent2);
-		ReadingFiles.CountryNameObject.put(country1.getName(), country1);
-		ReadingFiles.CountryNameObject.put(country2.getName(), country2);
-		ReadingFiles.CountryNameObject.put(country3.getName(), country3);
-		ReadingFiles.CountryNameObject.put(country4.getName(), country4);
-		ReadingFiles.CountryNameObject.put(country5.getName(), country5);
-		ReadingFiles.CountryNameObject.put(country6.getName(), country6);
+		ReadingFiles.ContinentNameObject.put(continentAsia.getName(), continentAsia);
+		ReadingFiles.ContinentNameObject.put(continentAfrica.getName(), continentAfrica);
+		ReadingFiles.CountryNameObject.put(countryIndia.getName(), countryIndia);
+		ReadingFiles.CountryNameObject.put(countryChina.getName(), countryChina);
+		ReadingFiles.CountryNameObject.put(countryPakistan.getName(), countryPakistan);
+		ReadingFiles.CountryNameObject.put(countryBhutan.getName(), countryBhutan);
+		ReadingFiles.CountryNameObject.put(countryIran.getName(), countryIran);
+		ReadingFiles.CountryNameObject.put(countryCanada.getName(), countryCanada);
 		ReadingFiles.playerId.put(player1.getPlayerId(), player1);
 		ReadingFiles.playerId.put(player2.getPlayerId(), player2);
 	}
