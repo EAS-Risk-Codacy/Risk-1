@@ -141,7 +141,6 @@ public class CreateMap {
 					JOptionPane.showMessageDialog(null, "Assign neighbours to all Countries");
 				} else {
 					JOptionPane.showMessageDialog(null, "Map successfully Created");
-					disp();
 					assign_countries_frame.dispose();
 					assign_countries_frame.dispose();
 					SelectMapType.MapType = 6;
@@ -300,7 +299,6 @@ public class CreateMap {
 					JOptionPane.showMessageDialog(null, "Assign neighbours to all Countries");
 				} else {
 					JOptionPane.showMessageDialog(null, "Map successfully Created");
-					disp();
 					assign_neighbours_frame.dispose();
 					SelectNoOfPlayers.assignCountries();
 				}
