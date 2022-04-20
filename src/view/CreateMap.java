@@ -8,7 +8,6 @@ import java.util.List;
 
 import javax.swing.*;
 
-import controller.SaveCreatedMap;
 import model.Continent;
 import model.Country;
 
