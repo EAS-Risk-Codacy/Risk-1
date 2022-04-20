@@ -25,9 +25,6 @@ public class CreateMap {
 	private JFrame get_number_frame;
 	private JFrame assign_neighbours_frame;
 	private JFrame assign_countries_frame;
-	private JLabel no_of_countries_label;
-	private JLabel no_of_continents_label;
-	private JLabel continent_contol_value_label;
 	private JTextField no_of_countries_text_field;
 	private JTextField no_of_continents_text_field;
 	private JTextField control_value_text_field;
@@ -60,9 +57,9 @@ public class CreateMap {
 	public void getnumbers() {
 		get_number_frame = new JFrame("Create Map");
 		get_number_frame.setSize(500, 500);
-		no_of_countries_label = new JLabel("No. of Countries");
+		JLabel no_of_countries_label = new JLabel("No. of Countries");
 		no_of_countries_label.setBounds(200, 27, 150, 50);
-		no_of_continents_label = new JLabel("No of continents");
+		JLabel no_of_continents_label = new JLabel("No of continents");
 		no_of_continents_label.setBounds(10, 27, 150, 50);
 		no_of_countries_text_field = new JTextField("3");
 		no_of_countries_text_field.setBounds(300, 43, 50, 20);
@@ -90,7 +87,7 @@ public class CreateMap {
 		assign_countries_panel.setSize(100, 800);
 		assign_countries_frame.setSize(1000, 1000);
 
-		continent_contol_value_label = new JLabel("Continent Control Value");
+		JLabel continent_contol_value_label = new JLabel("Continent Control Value");
 		continent_contol_value_label.setBounds(10, 200, 150, 50);
 		add_to_continent_button = new JButton("Add Countries");
 		add_to_continent_button.setBounds(575, 500, 150, 30);
@@ -307,7 +304,6 @@ public class CreateMap {
 					disp();
 					assign_neighbours_frame.dispose();
 					SelectNoOfPlayers.assignCountries();
-					SaveCreatedMap SaveMapObejct = new SaveCreatedMap();
 				}
 			}
 		});
