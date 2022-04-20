@@ -84,6 +84,7 @@ public class RandomStrategyTest {
 		start.setCountryData(countryCanada, 6, 61);
 		start.setCountryData(countryEgypt, 7, 71);
 
+		//Countries
 		Country[] listCountries1 = {countryChina, countryIran, countryCanada};
 		n_list = new ArrayList<>(Arrays.asList(listCountries1));
 
@@ -99,6 +100,7 @@ public class RandomStrategyTest {
 		Country[] listCountries5 = {countryIndia, countryPakistan, countryIran};
 		n_list2 = new ArrayList<>(Arrays.asList(listCountries5));
 
+		//CardTypes
 		CardTypes[] cardTypes1 = {CardTypes.Infantry, CardTypes.Cavalry, CardTypes.Cavalry};
 		listp1 = new ArrayList<>(Arrays.asList(cardTypes1));
 
