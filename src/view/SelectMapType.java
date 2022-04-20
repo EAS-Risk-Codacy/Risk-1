@@ -15,8 +15,6 @@ import javax.swing.JLabel;
 public class SelectMapType {
 
 	private JFrame window;
-	private JLabel HeaderLabel;
-	private JButton select1, select2, select3;
 	public static int MapType = 0;
 	
 
@@ -33,24 +31,24 @@ public class SelectMapType {
 		window = new JFrame("Start-up phase");
 		window.setSize(500, 700);
 
-		HeaderLabel = new JLabel("Choose the map");
-		HeaderLabel.setBounds(120, 100, 150, 50);
+		JLabel headerLabel = new JLabel("Choose the map");
+		headerLabel.setBounds(120, 100, 150, 50);
 
-		select1 = new JButton("Select from List");
+		JButton select1 = new JButton("Select from List");
 		select1.setBounds(100, 200, 200, 50);
 
-		select2 = new JButton("Load Map");
+		JButton select2 = new JButton("Load Map");
 		select2.setBounds(100, 300, 200, 50);
 
-		select3 = new JButton("Create New Map");
+		JButton select3 = new JButton("Create New Map");
 		select3.setBounds(100, 400, 200, 50);
 
-		window.add(HeaderLabel);
+		window.add(headerLabel);
 		window.add(select1);
 		window.add(select2);
 		window.add(select3);
 
-		HeaderLabel.setVisible(true);
+		headerLabel.setVisible(true);
 
 		select1.addActionListener(new ActionListener() {
 
@@ -59,7 +57,6 @@ public class SelectMapType {
 				window.dispose();
 				MapType = 1;
 //				System.out.print("Select fromlist");
-				SelectMap Map = new SelectMap();
 			}
 		});
 		select2.addActionListener(new ActionListener() {
@@ -68,7 +65,6 @@ public class SelectMapType {
 			public void actionPerformed(ActionEvent arg0) {
 				MapType = 2;
 				window.dispose();
-				BrowseMapFile Map = new BrowseMapFile();
 			}
 		});
 
@@ -78,7 +74,6 @@ public class SelectMapType {
 			public void actionPerformed(ActionEvent arg0) {
 				MapType = 3;
 				window.dispose();
-				CreateMap CreatedMap = new CreateMap();
 			}
 		});
 
