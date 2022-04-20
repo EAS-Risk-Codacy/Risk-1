@@ -20,14 +20,26 @@ import model.Country;
  */
 public class CreateMap {
 
-	private JPanel assign_countries_panel, assign_neighbours_panel;
-	private JFrame assign_countries_frame, assign_neighbours_frame, get_number_frame;
-	private JLabel no_of_countries_label, no_of_continents_label, continent_contol_value_label;
-	private JTextField no_of_countries_text_field, no_of_continents_text_field, control_value_text_field;
+	private JPanel  assign_neighbours_panel;
+	private JPanel assign_countries_panel;
+	private JFrame get_number_frame;
+	private JFrame  assign_neighbours_frame;
+	private JFrame assign_countries_frame;
+	private JLabel no_of_countries_label;
+	private JLabel no_of_continents_label;
+	private JLabel continent_contol_value_label;
+	private JTextField no_of_countries_text_field;
+	private JTextField no_of_continents_text_field;
+	private JTextField control_value_text_field;
 	private JButton generate_map_button;
-	private JButton add_to_country_button, add_to_continent_button, next_button, done_button;
-	private JComboBox continents_combo, countries_combo;
-	public static int NoOfCountries, NoOfContinents;
+	private JButton add_to_country_button;
+	private JButton add_to_continent_button;
+	private JButton next_button;
+	private JButton done_button;
+	private JComboBox continents_combo;
+	private JComboBox countries_combo;
+	public static int NoOfCountries;
+	public static int NoOfContinents;
 	private List<Continent> continents = new ArrayList<Continent>();
 	private JCheckBox[] check_boxes = new JCheckBox[150];
 	private JCheckBox[] check_boxes1 = new JCheckBox[150];
@@ -36,8 +48,6 @@ public class CreateMap {
 	public static List<Country> CountriesObjectList = new ArrayList<>();
 
 	private static JButton EditButton;
-
-	private static int Index1 = 0;
 
 	public CreateMap() {
 		GetNumbers();
