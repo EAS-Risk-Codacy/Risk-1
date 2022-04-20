@@ -1,23 +1,17 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.List;
+import java.util.Objects;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.border.CompoundBorder;
+
 
 import controller.MyActionListner;
 
@@ -28,10 +22,12 @@ import controller.MyActionListner;
  * @version 1.0
  */
 public class MFrame4 extends JFrame implements ActionListener {
-	JPanel jPanel2;
-	JTextField field, field2;
-	JButton button, button2;
-	public static int no1, no2 = 1;
+	JTextField field;
+	JTextField field2;
+	JButton button;
+	JButton button2;
+	public static int no1=1;
+	public static int no2 = 1;
 	public static boolean allout = false;
 	MyActionListner actionListner;
 
@@ -96,7 +92,7 @@ public class MFrame4 extends JFrame implements ActionListener {
 			no1 = Integer.parseInt(field.getText());
 			no2 = Integer.parseInt(field2.getText());
 
-			if (arg0.getActionCommand() == "All Out") {
+			if (Objects.equals(arg0.getActionCommand(), "All Out")) {
 				allout = true;
 			} else {
 				allout = false;
