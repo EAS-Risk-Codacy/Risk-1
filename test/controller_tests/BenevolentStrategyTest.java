@@ -159,7 +159,8 @@ public class BenevolentStrategyTest {
 		Country c = countries.get(helper.getWeakestCountryIndex(countries));
 		int armies_before = c.getNoOfArmies();
 		bs.fortify(player1);
-		assertTrue(c.getNoOfArmies() > armies_before);
+		int armies_after = c.getNoOfArmies();
+		assertTrue(armies_after > armies_before);
 	}
 
 }
