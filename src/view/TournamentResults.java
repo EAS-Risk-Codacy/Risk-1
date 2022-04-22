@@ -22,15 +22,9 @@ public class TournamentResults {
 		HeaderLabel = new JLabel("Results");
 		HeaderLabel.setBounds(120, 100, 150, 50);
 
-//		panel.add(HeaderLabel);
-	//	panel.add(field);
 		
 		HeaderLabel.setVisible(true);
-//		field.setVisible(true);
-		
-		
-	//	window.setLocationRelativeTo(null);
-	//	window.setLayout(null);
+
 	}
 	public void adding(String aaa) {
 		JLabel jLabel=new JLabel(aaa);
