@@ -1,6 +1,4 @@
 package controller_tests;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +13,8 @@ import controller.ReadingFiles;
 import model.Continent;
 import model.Country;
 import model.Player;
+
+import static org.junit.Assert.*;
 
 /**
  * Class to test Fortification Controller
@@ -104,7 +104,7 @@ public class FortificationTest {
 	 */
 	@Test
 	public void testHasPathBFS() {
-		assertEquals(true, fortification.hasPathBFS2(countryIndia, countryPakistan));
+		assertTrue(fortification.hasPathBFS2(countryIndia, countryPakistan));
 	}
 
 	/**

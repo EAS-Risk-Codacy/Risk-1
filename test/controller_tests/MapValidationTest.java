@@ -1,5 +1,4 @@
 package controller_tests;
-import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,6 +10,8 @@ import org.junit.Test;
 import controller.MapValidation;
 import model.Continent;
 import model.Country;
+
+import static org.junit.Assert.*;
 
 
 /**
@@ -44,19 +45,19 @@ public class MapValidationTest {
 		continent2 = new Continent(5, "Africa");
 		continent3 = new Continent(6, "North America");
 
-		n_list = new ArrayList<Country>();
+		n_list = new ArrayList<>();
 		n_list.add(country2);
 		n_list.add(country3);
 		n_list.add(country4);
 
-		n_list1 = new ArrayList<Country>();
+		n_list1 = new ArrayList<>();
 		n_list1.add(country5);
 
-		n_list2 = new ArrayList<Country>();
+		n_list2 = new ArrayList<>();
 		n_list2.add(country5);
 		n_list2.add(country1);
 
-		n_list3 = new ArrayList<Country>();
+		n_list3 = new ArrayList<>();
 		n_list3.add(country1);
 		n_list3.add(country2);
 		n_list3.add(country3);
@@ -117,7 +118,7 @@ public class MapValidationTest {
 	@Test
 	public void testBidirectionalCheck() {
 		map.biDirectionalCheck();
-		assertEquals(true, country2.getNeighbors().contains(country1));
+		assertTrue(country2.getNeighbors().contains(country1));
 	}
 
 	/**
@@ -128,7 +129,7 @@ public class MapValidationTest {
 	public void testNoContinentIsUsed() {
 		continent3.setCountries(null);
 		map.NoContinentIsUnused();
-		assertEquals(true, map.getString().contains("EVERY CONTINENT IS NOT USED"));
+		assertTrue(map.getString().contains("EVERY CONTINENT IS NOT USED"));
 	}
 
 	/**
@@ -137,7 +138,7 @@ public class MapValidationTest {
 	@Test
 	public void testNotItsOwnNeighbour() {
 		map.NotItsOwnNeighbour();
-		assertEquals(true, map.getString2().contains("Neighbour Of itself Removed"));
+		assertTrue(map.getString2().contains("Neighbour Of itself Removed"));
 	}
 
 	/**
@@ -147,7 +148,7 @@ public class MapValidationTest {
 	@Test
 	public void testContinentHaveSameCountry() {
 		map.continentHaveSameCountry();
-		assertEquals(true, map.getString().contains("MULTIPLE CONTINENTS HAVE SAME COUNTRIES"));
+		assertTrue(map.getString().contains("MULTIPLE CONTINENTS HAVE SAME COUNTRIES"));
 	}
 	
 	/**
@@ -158,7 +159,7 @@ public class MapValidationTest {
 	public void testGraphConnectivity()
 	{
 		map.GraphConnectivity();
-		assertEquals(false,map.getString().contains("Error Connectivity Graph"));
+		assertFalse(map.getString().contains("Error Connectivity Graph"));
 	}
 	
 	/**
@@ -173,7 +174,7 @@ public class MapValidationTest {
 		countries.put("Canada",country6);
 		countries.put("USA",country7);
 		map.GraphConnectivity();
-		assertEquals(true,map.getString().contains("Error Connectivity Graph"));
+		assertTrue(map.getString().contains("Error Connectivity Graph"));
 	}
 	
 	/**
@@ -185,7 +186,7 @@ public class MapValidationTest {
 	{
 		map.getString().clear();
 		map.ContinentConectivity();
-		assertEquals(true,map.getString().contains("Error Connectivity Graph"));
+		assertTrue(map.getString().contains("Error Connectivity Graph"));
 	}
 	
 	/**
@@ -196,7 +197,7 @@ public class MapValidationTest {
 	public void testEmptyNeighbours()
 	{
 		map.EmptyNeighbours();
-		assertEquals(false,map.getString().contains("No Neighbours - Unresolver"));
+		assertFalse(map.getString().contains("No Neighbours - Unresolver"));
 	}
 
 }

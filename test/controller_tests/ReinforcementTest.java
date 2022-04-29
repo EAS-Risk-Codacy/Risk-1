@@ -1,8 +1,4 @@
 package controller_tests;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -19,6 +15,8 @@ import model.CardTypes;
 import model.Continent;
 import model.Country;
 import model.Player;
+
+import static org.junit.Assert.*;
 
 /**
  * This class tests reinforcement controller
@@ -88,22 +86,22 @@ public class ReinforcementTest {
 		country7.setContinent(continent2);
 		
 
-		List<Country> n_list = new ArrayList<Country>();
+		List<Country> n_list = new ArrayList<>();
 		n_list.add(country1);
 		n_list.add(country2);
 		n_list.add(country3);
 		n_list.add(country4);
 
-		List<Country> n_list1 = new ArrayList<Country>();
+		List<Country> n_list1 = new ArrayList<>();
 		n_list1.add(country5);
 		n_list1.add(country6);
 
-		List<Country> n_list2 = new ArrayList<Country>();
+		List<Country> n_list2 = new ArrayList<>();
 		n_list2.add(country5);
 		n_list2.add(country6);
 		n_list2.add(country7);
 
-		List<Country> n_list3 = new ArrayList<Country>();
+		List<Country> n_list3 = new ArrayList<>();
 		n_list3.add(country1);
 		n_list3.add(country2);
 		n_list3.add(country3);
@@ -156,7 +154,7 @@ public class ReinforcementTest {
 		player2 = new Player(10);
 		player2.setPlayerId(10);
 		player2.setPlayerName("Neeraj");
-		player2.setPlayerColor(new Color(0 - 191 - 255));
+		player2.setPlayerColor(new Color(-191 - 255));
 		player2.setPlayerTotalArmiesNotDeployed(0);
 		player2.setContinentsOccupied(null);
 		player2.setPlayerArmies(8);
@@ -197,7 +195,6 @@ public class ReinforcementTest {
 		ReadingFiles.ContinentNameObject = new HashMap<>();
 		ReadingFiles.playerId = new HashMap<>();
 		temp = ReadingFiles.ContinentNameObject;
-		ReadingFiles.ContinentNameObject.clear();
 		ReadingFiles.ContinentNameObject.put(continent1.getName(), continent1);
 		ReadingFiles.ContinentNameObject.put(continent2.getName(), continent2);
 		ReadingFiles.CountryNameObject.put(country1.getName(), country1);
@@ -290,7 +287,7 @@ public class ReinforcementTest {
 	 */
 	@Test
 	public void test1EndReinforcementCheck() {
-		assertEquals(null, reinforcement.endReinforcementCheck(player1));
+		assertNull(reinforcement.endReinforcementCheck(player1));
 
 	}
 	

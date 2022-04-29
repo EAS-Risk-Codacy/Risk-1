@@ -1,6 +1,7 @@
 package controller_tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -195,6 +196,6 @@ public class AggressiveStrategyTest {
 		int armies_before_fortify = c.getNoOfArmies();
 		ast.fortify(player1);
 		int armies_after_fortify = c.getNoOfArmies();
-		assertEquals(true, armies_after_fortify > armies_before_fortify);
+		assertTrue(armies_after_fortify > armies_before_fortify);
 	}
 }

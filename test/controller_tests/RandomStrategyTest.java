@@ -31,7 +31,6 @@ public class RandomStrategyTest {
 	RandomStrategy rs;
 	Player player1;
 	Player player2;
-	Player player3;
 	Country countryIndia;
 	Country countryChina;
 	Country countryPakistan;
@@ -143,9 +142,6 @@ public class RandomStrategyTest {
 		temp = ReadingFiles.CountryNameObject;
 		temp1 = ReadingFiles.playerId;
 		temp3 = ReadingFiles.ContinentNameObject;
-		ReadingFiles.ContinentNameObject.clear();
-		ReadingFiles.playerId.clear();
-		ReadingFiles.CountryNameObject.clear();
 		ReadingFiles.ContinentNameObject.put(continentAsia.getName(), continentAsia);
 		ReadingFiles.ContinentNameObject.put(continentAfrica.getName(), continentAfrica);
 		ReadingFiles.CountryNameObject.put(countryIndia.getName(), countryIndia);
@@ -179,14 +175,14 @@ public class RandomStrategyTest {
 		int flag = 0;
 		List<Country> list_before = player1.getMyCountries(player1);
 		Map<String, Integer> armyPerCountry = new HashMap<>();
-		for (int i = 0; i < list_before.size(); i++) {
-			armyPerCountry.put(list_before.get(i).getName(), list_before.get(i).getNoOfArmies());
+		for (Country country : list_before) {
+			armyPerCountry.put(country.getName(), country.getNoOfArmies());
 		}
 		rs.reinforce(player1);
 		list_before = player1.getMyCountries(player1);
-		for (int i = 0; i < list_before.size(); i++) {
-			int beforeCount = armyPerCountry.get(list_before.get(i).getName());
-			int afterCount = list_before.get(i).getNoOfArmies();
+		for (Country country : list_before) {
+			int beforeCount = armyPerCountry.get(country.getName());
+			int afterCount = country.getNoOfArmies();
 			if (beforeCount < afterCount) {
 				flag = 1;
 				break;
@@ -194,7 +190,7 @@ public class RandomStrategyTest {
 
 		}
 
-		assertEquals(true, flag == 1);
+		assertEquals(1, flag);
 	}
 
 	/**
@@ -205,14 +201,14 @@ public class RandomStrategyTest {
 		int flag = 0;
 		List<Country> list_before = player1.getMyCountries(player1);
 		Map<String, Integer> armyPerCountry = new HashMap<>();
-		for (int i = 0; i < list_before.size(); i++) {
-			armyPerCountry.put(list_before.get(i).getName(), list_before.get(i).getNoOfArmies());
+		for (Country country : list_before) {
+			armyPerCountry.put(country.getName(), country.getNoOfArmies());
 		}
 		rs.attack(player1);
 		list_before = player1.getMyCountries(player1);
-		for (int i = 0; i < list_before.size(); i++) {
-			int beforeCount = armyPerCountry.get(list_before.get(i).getName());
-			int afterCount = list_before.get(i).getNoOfArmies();
+		for (Country country : list_before) {
+			int beforeCount = armyPerCountry.get(country.getName());
+			int afterCount = country.getNoOfArmies();
 			if (beforeCount != afterCount) {
 				flag = 1;
 				break;
@@ -220,7 +216,7 @@ public class RandomStrategyTest {
 
 		}
 
-		assertEquals(true, flag == 1);
+		assertEquals(1, flag);
 
 	}
 
@@ -232,21 +228,21 @@ public class RandomStrategyTest {
 		int flag = 0;
 		List<Country> list_before = player1.getMyCountries(player1);
 		Map<String, Integer> armyPerCountry = new HashMap<>();
-		for (int i = 0; i < list_before.size(); i++) {
-			armyPerCountry.put(list_before.get(i).getName(), list_before.get(i).getNoOfArmies());
+		for (Country country : list_before) {
+			armyPerCountry.put(country.getName(), country.getNoOfArmies());
 		}
 		rs.attack(player1);
 		list_before = player1.getMyCountries(player1);
-		for (int i = 0; i < list_before.size(); i++) {
-			int beforeCount = armyPerCountry.get(list_before.get(i).getName());
-			int afterCount = list_before.get(i).getNoOfArmies();
+		for (Country country : list_before) {
+			int beforeCount = armyPerCountry.get(country.getName());
+			int afterCount = country.getNoOfArmies();
 			if (beforeCount != afterCount) {
 				flag = 1;
 				break;
 			}
 
 		}
-		assertEquals(true, flag == 1);
+		assertEquals(1, flag);
 	}
 
 }

@@ -1,6 +1,7 @@
 package controller_tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -109,7 +110,7 @@ public class CheaterStrategyTest {
 		start.setPlayerSpecificData(player1, new Color(255, 255, 0), 4, listp1, null);
 		player2 = new Player(10);
 		start.setPlayerData(player1, 10, "Neeraj", 8, n_list3);
-		start.setPlayerSpecificData(player1, new Color(0 - 191 - 255), 0, listp2, null);
+		start.setPlayerSpecificData(player1, new Color(255, 254, 66), 0, listp2, null);
 
 		start.setCountrySpecificData(countryIndia, n_list, 1, player2);
 		start.setCountrySpecificData(countryChina, n_list3, 4, player1);
@@ -127,9 +128,6 @@ public class CheaterStrategyTest {
 		temp = ReadingFiles.CountryNameObject;
 		temp1 = ReadingFiles.playerId;
 		temp3 = ReadingFiles.ContinentNameObject;
-		ReadingFiles.ContinentNameObject.clear();
-		ReadingFiles.playerId.clear();
-		ReadingFiles.CountryNameObject.clear();
 		ReadingFiles.ContinentNameObject.put(continentAsia.getName(), continentAsia);
 		ReadingFiles.ContinentNameObject.put(continentAfrica.getName(), continentAfrica);
 		ReadingFiles.CountryNameObject.put(countryIndia.getName(), countryIndia);
@@ -180,7 +178,7 @@ public class CheaterStrategyTest {
 		cs.attack(player1);
 		int size_after = player1.getMyCountries(player1).size();
 		// if(size_before>size_after)
-		assertEquals(true, size_before <= size_after);
+		assertTrue(size_before <= size_after);
 	}
 
 	/**
