@@ -27,9 +27,11 @@ public class SelectPlayerStrategies {
 	public static ArrayList<String> strategy_selected = new ArrayList<>();
 	ArrayList<JLabel> jlabel1 = new ArrayList<>();
 	ArrayList<JComboBox> jcombo_array = new ArrayList<>();
+	ArrayList<JComboBox> jcombo_colors = new ArrayList<>();
 
 	String[] single = { "Human", "Agressive", "Benevolent", "Random", "Cheater" };
 	String[] tournament = { "Agressive", "Benevolent", "Random", "Cheater" };
+	String[] colors = { "red", "green", "blue", "cyan", "orange", "magenta" };
 
 	/**
 	 * Select player strategies
@@ -57,6 +59,11 @@ public class SelectPlayerStrategies {
 			jlabel1.get(i).setBounds(10, j, 250, 50);
 			jcombo_array.add(new JComboBox(list));
 			jcombo_array.get(i).setBounds(100, j + 15, 200, 20);
+
+			jcombo_colors.add(new JComboBox(colors));
+			jcombo_colors.get(i).setBounds(100,j + 35, 200, 20);
+
+			frame.add(jcombo_colors.get(i));
 			frame.add(jcombo_array.get(i));
 			frame.add(jlabel1.get(i));
 			jcombo_array.get(i).setVisible(true);

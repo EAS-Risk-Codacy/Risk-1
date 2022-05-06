@@ -107,12 +107,12 @@ public static boolean errors = false;
 			players = new ArrayList<>();
 			playerId = new HashMap<>();
 			List<Color> arrayListc = new ArrayList<>();
+			arrayListc.add(Color.red);
+			arrayListc.add(Color.green);
+			arrayListc.add(Color.blue);
 			arrayListc.add(Color.cyan);
-			arrayListc.add(Color.GREEN);
-			arrayListc.add(Color.WHITE);
-			arrayListc.add(Color.PINK);
-			arrayListc.add(Color.decode("#ffff00"));
-			arrayListc.add(Color.decode("#FF6600"));
+			arrayListc.add(Color.orange);
+			arrayListc.add(Color.magenta);
 
 
 			for (int i = 0; i < noofplayers; i++) {

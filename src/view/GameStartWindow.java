@@ -52,7 +52,7 @@ public class GameStartWindow {
 			public void actionPerformed(ActionEvent arg0) {
 				window.dispose();
 				GameMode=1;
-
+				SelectMap Map = new SelectMap();
 			}
 		});
 		tournament_button.addActionListener(new ActionListener() {
